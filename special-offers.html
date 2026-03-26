@@ -71,7 +71,36 @@
             },
         }
     </script>
-<style>
+    <style>
+        /* FOUC Prevention */
+        [x-cloak] { display: none !important; }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .preloader-logo {
+            font-family: 'Noto Serif', serif;
+            font-size: 2.5rem;
+            color: #765629;
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+        @keyframes pulse-logo {
+            0%, 100% { opacity: 0.3; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f9f9f9; }
         .font-serif { font-family: 'Noto Serif', serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
@@ -80,6 +109,10 @@
     </style>
 </head>
 <body class="text-on-surface">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-logo tracking-tighter italic">Madhubhan</div>
+    </div>
 <!-- Top Navigation Shell -->
 <nav class="fixed top-0 w-full flex justify-between items-center px-6 md:px-12 py-6 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-sm dark:shadow-none z-50">
 <a href="index.html" class="text-2xl font-serif tracking-tighter text-[#765629] dark:text-[#AA8453]">Madhubhan</a>
@@ -116,7 +149,7 @@
 <!-- Main Featured Offer -->
 <div class="md:col-span-8 group cursor-pointer">
 <div class="relative overflow-hidden aspect-[16/9]">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Aerial view of a luxury resort swimming pool surrounded by tropical palm trees and stone pathways in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAadHZyowvFhKBkkbVjxQGCjXjPov57to1FEGiqLUvS9nDhettEUWOLnB1IrpNFiKvLMYwhHx0lY0l44dsgpBUYFFmxGjMepNx7QYE3U73V-EdlCjOG7YsQgaRNiCD5OjXLD6uqzRF9cn_lhsS8uxPd24-fq_NP3iMrmc2ZSTHa-_eRcaRd3a9iNNvlgtKMOftGRdmjsG55wdF9ulzp6cA5FBSXW6rj8nde5zFieKR7FaJNGePfayFhuwesNl16o8RjGvk3pRi7jg"/>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Aerial view of a luxury resort swimming pool surrounded by tropical palm trees and stone pathways in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAadHZyowvFhKBkkbVjxQGCjXjPov57to1FEGiqLUvS9nDhettEUWOLnB1IrpNFiKvLMYwhHx0lY0l44dsgpBUYFFmxGjMepNx7QYE3U73V-EdlCjOG7YsQgaRNiCD5OjXLD6uqzRF9cn_lhsS8uxPd24-fq_NP3iMrmc2ZSTHa-_eRcaRd3a9iNNvlgtKMOftGRdmjsG55wdF9ulzp6cA5FBSXW6rj8nde5zFieKR7FaJNGePfayFhuwesNl16o8RjGvk3pRi7jg" loading="lazy"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 <div class="absolute bottom-0 left-0 p-8 text-white">
 <span class="inline-block bg-primary/90 px-3 py-1 text-[10px] tracking-widest uppercase mb-4">Limited Availability</span>
@@ -178,7 +211,7 @@
 <img class="w-full aspect-[3/4] object-cover" data-alt="Indian wedding bride hands with intricate henna designs holding traditional jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEz5PQS8mbvEkQKNnkrrfetyFNuRgVRgi7Bf7wsicF1ouDUxLZhHO27vykLYISyYB6Udze6ha98jExZ8PHtPvzbgUMRx57P8CpVkGd5M1fnfUquq2GNn7dxqsaioSo9t_4kx6iIsHimgJNQj3pHA4YKE0lTytlqIwXssWvH91sEGIDh_6vP8k6rIqdS-5RIR69TDjSnVNWVfcXrGidvXXPXyVYZb2qrAfASvx_rgZAEDIRml4BvmUTEGnP2k6PImsVaBkAQcsBsQ"/>
 </div>
 <div class="pb-12">
-<img class="w-full aspect-[3/4] object-cover" data-alt="Elegant garden wedding table setting with pastel flowers and crystal glassware under a canopy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAvMV_aEzw-Xa1BHKzc4nO3uEwdhmeleVig6EPi__vameF72n6Dv47tjfVz4MbVY441pZyemdprfYcYsw71asGI6W01zBvXzpql5vAahYj27i_YFCjAzhRCnRP3GgN-PVDTcZgSa582h3n9XKV06BzRP4kNPWzbMdySfW4LQPAnQG2FZ2QwO61fIbLmmC-EYc7-Sm9S5DO1KVi-iQWdHR75AKUYBAGl1pCVjTlq4k6T9M4UoOq0kPvSAIDqHmwdQHDcRdVIfG2Tw"/>
+<img class="w-full aspect-[3/4] object-cover" data-alt="Elegant garden wedding table setting with pastel flowers and crystal glassware under a canopy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAvMV_aEzw-Xa1BHKzc4nO3uEwdhmeleVig6EPi__vameF72n6Dv47tjfVz4MbVY441pZyemdprfYcYsw71asGI6W01zBvXzpql5vAahYj27i_YFCjAzhRCnRP3GgN-PVDTcZgSa582h3n9XKV06BzRP4kNPWzbMdySfW4LQPAnQG2FZ2QwO61fIbLmmC-EYc7-Sm9S5DO1KVi-iQWdHR75AKUYBAGl1pCVjTlq4k6T9M4UoOq0kPvSAIDqHmwdQHDcRdVIfG2Tw" loading="lazy"/>
 </div>
 </div>
 <!-- Overlapping glass card -->
@@ -224,7 +257,7 @@
 <div class="flex flex-col lg:flex-row gap-12 items-center">
 <div class="w-full lg:w-3/5 relative group">
 <div class="aspect-[16/10] overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Luxurious Mandavli Deluxe room with high wood-beamed ceilings, traditional Gujarati decor, and a plush king-sized bed looking out onto a private courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnB-yQvVqY6N0Fm-m-zV3v9p4k4f5g6h7j8k9l0m1n2o3p4q5r6s7t8u9v0w1x2y3z4a5b6c7d8e9f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4u5v6w7x8y9z0"/>
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Luxurious Mandavli Deluxe room with high wood-beamed ceilings, traditional Gujarati decor, and a plush king-sized bed looking out onto a private courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnB-yQvVqY6N0Fm-m-zV3v9p4k4f5g6h7j8k9l0m1n2o3p4q5r6s7t8u9v0w1x2y3z4a5b6c7d8e9f0g1h2i3j4k5l6m7n8o9p0q1r2s3t4u5v6w7x8y9z0" loading="lazy"/>
 </div>
 <div class="absolute -bottom-6 -right-6 hidden md:block bg-surface-container-highest p-8 max-w-xs shadow-xl">
 <p class="font-headline text-xl text-primary italic mb-2">Heritage Comfort</p>
@@ -283,7 +316,7 @@
         </p>
         <div class="pt-8 border-t border-stone-200">
             <p class="text-[10px] text-stone-400 uppercase tracking-widest leading-loose">
-                Disclaimer: This website is operated by Sumit Kumar, an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
+                Disclaimer: This website is operated by an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
             </p>
         </div>
     </div>
@@ -306,15 +339,22 @@
     <div class="space-y-8">
         <h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-8">Agency Contact</h4>
         <ul class="space-y-4 text-stone-500 font-light text-sm">
-            <li>Sumit Kumar (Authorized Partner)</li>
+            <li>Authorized Booking Partner</li>
             <li>Anand-Sojitra Road, Vallabh Vidyanagar</li>
             <li><a href="tel:+919117274186" class="hover:text-primary transition-colors">+91 9117274186</a></li>
             <li><a href="mailto:info@madhubhanbooking.in" class="hover:text-primary transition-colors">info@madhubhanbooking.in</a></li>
         </ul>
         <p class="text-[10px] text-stone-400 uppercase tracking-widest pt-12">
-            © 2024 Sumit Kumar Travel - Independent Agency.
+            © 2024 Madhubhan Booking - Independent Agency.
         </p>
     </div>
 </footer>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 600);
+        });
+    </script>
 <script src="assets/custom.js"></script>
 </body></html>

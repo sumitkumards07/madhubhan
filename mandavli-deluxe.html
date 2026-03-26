@@ -72,7 +72,36 @@
         },
       }
     </script>
-<style>
+    <style>
+        /* FOUC Prevention */
+        [x-cloak] { display: none !important; }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .preloader-logo {
+            font-family: 'Noto Serif', serif;
+            font-size: 2.5rem;
+            color: #765629;
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+        @keyframes pulse-logo {
+            0%, 100% { opacity: 0.3; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
       }
@@ -92,6 +121,10 @@
     </style>
 </head>
 <body class="bg-background text-on-surface">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-logo tracking-tighter italic">Madhubhan</div>
+    </div>
 <!-- Top Navigation (Shared Component) -->
 <nav class="fixed top-0 w-full flex justify-between items-center px-12 py-6 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md z-50 shadow-sm dark:shadow-none">
 <a href="index.html" class="text-2xl font-serif tracking-tighter text-[#765629] dark:text-[#AA8453]">Madhubhan</a>
@@ -290,7 +323,7 @@
         </p>
         <div class="pt-8 border-t border-stone-200">
             <p class="text-[10px] text-stone-400 uppercase tracking-widest leading-loose">
-                Disclaimer: This website is operated by Sumit Kumar, an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
+                Disclaimer: This website is operated by an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
             </p>
         </div>
     </div>
@@ -314,13 +347,13 @@
     <div class="space-y-8">
         <h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-8">Agency Contact</h4>
         <ul class="space-y-4 text-stone-500 font-light text-sm">
-            <li>Sumit Kumar (Authorized Partner)</li>
+            <li>Authorized Booking Partner</li>
             <li>Anand-Sojitra Road, Vallabh Vidyanagar</li>
             <li><a href="tel:+919117274186" class="hover:text-primary transition-colors">+91 9117274186</a></li>
             <li><a href="mailto:info@madhubhanbooking.in" class="hover:text-primary transition-colors">info@madhubhanbooking.in</a></li>
         </ul>
         <p class="text-[10px] text-stone-400 uppercase tracking-widest pt-12">
-            © 2024 Sumit Kumar Travel - Independent Agency.
+            © 2024 Madhubhan Booking - Independent Agency.
         </p>
     </div>
 </footer>

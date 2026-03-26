@@ -3,7 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Accommodation | Madhubhan Resort &amp; Spa</title>
+<title>Accommodation | Madhubhan Resort - Authorized Booking Partner</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -73,6 +73,35 @@
       }
     </script>
 <style>
+        /* FOUC Prevention */
+        [x-cloak] { display: none !important; }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .preloader-logo {
+            font-family: 'Noto Serif', serif;
+            font-size: 2.5rem;
+            color: #765629;
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+        @keyframes pulse-logo {
+            0%, 100% { opacity: 0.3; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-serif { font-family: 'Noto Serif', serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
@@ -81,6 +110,10 @@
     </style>
 </head>
 <body class="bg-surface text-on-surface">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-logo tracking-tighter italic">Madhubhan</div>
+    </div>
 <!-- TopNavBar Shell -->
 <nav class="fixed top-0 w-full flex justify-between items-center px-6 md:px-12 py-6 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-sm dark:shadow-none z-50">
 <a href="index.html" class="text-2xl font-serif tracking-tighter text-[#765629] dark:text-[#AA8453]">Madhubhan</a>
@@ -342,7 +375,7 @@
         </p>
         <div class="pt-8 border-t border-stone-200">
             <p class="text-[10px] text-stone-400 uppercase tracking-widest leading-loose">
-                Disclaimer: This website is operated by Sumit Kumar, an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
+                Disclaimer: This website is operated by an independent private travel agency. We are NOT affiliated with or the official website of Madhubhan Resort & Spa.
             </p>
         </div>
     </div>
@@ -365,13 +398,13 @@
     <div class="space-y-8">
         <h4 class="text-xs font-bold uppercase tracking-widest text-primary mb-8">Agency Contact</h4>
         <ul class="space-y-4 text-stone-500 font-light text-sm">
-            <li>Sumit Kumar (Authorized Partner)</li>
+            <li>Authorized Booking Partner</li>
             <li>Anand-Sojitra Road, Vallabh Vidyanagar</li>
             <li><a href="tel:+919117274186" class="hover:text-primary transition-colors">+91 9117274186</a></li>
             <li><a href="mailto:info@madhubhanbooking.in" class="hover:text-primary transition-colors">info@madhubhanbooking.in</a></li>
         </ul>
         <p class="text-[10px] text-stone-400 uppercase tracking-widest pt-12">
-            © 2024 Sumit Kumar Travel - Independent Agency.
+            © 2024 Madhubhan Booking - Independent Agency.
         </p>
     </div>
 </footer>
